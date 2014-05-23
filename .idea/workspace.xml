@@ -26,8 +26,12 @@
       <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="65" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.6847826" vertical-offset="0" max-vertical-offset="1932">
-              <folding />
+            <state line="28" column="30" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.589372" vertical-offset="100" max-vertical-offset="2037">
+              <folding>
+                <marker date="1400853834062" expanded="true" signature="874:889" placeholder="..." />
+                <marker date="1400853834062" expanded="true" signature="1276:1355" placeholder="..." />
+                <marker date="1400853834062" expanded="true" signature="1276:1312" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -35,9 +39,9 @@
       <file leaf-file-name="Request.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Request.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="21" selection-start="691" selection-end="691" vertical-scroll-proportion="-18.9" vertical-offset="0" max-vertical-offset="693">
+            <state line="12" column="62" selection-start="318" selection-end="318" vertical-scroll-proportion="-8.4" vertical-offset="0" max-vertical-offset="735">
               <folding>
-                <marker date="1400847668903" expanded="true" signature="274:344" placeholder="SELECT * FRO..." />
+                <marker date="1400853707861" expanded="true" signature="274:415" placeholder="SELECT * FRO..." />
               </folding>
             </state>
           </provider>
@@ -262,17 +266,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Request.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="21" selection-start="691" selection-end="691" vertical-scroll-proportion="-18.9" vertical-offset="0" max-vertical-offset="693">
+        <state line="12" column="62" selection-start="318" selection-end="318" vertical-scroll-proportion="-8.4" vertical-offset="0" max-vertical-offset="735">
           <folding>
-            <marker date="1400847668903" expanded="true" signature="274:344" placeholder="SELECT * FRO..." />
+            <marker date="1400853707861" expanded="true" signature="274:415" placeholder="SELECT * FRO..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="65" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.6847826" vertical-offset="0" max-vertical-offset="1932">
-          <folding />
+        <state line="28" column="30" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.589372" vertical-offset="100" max-vertical-offset="2037">
+          <folding>
+            <marker date="1400853834062" expanded="true" signature="874:889" placeholder="..." />
+            <marker date="1400853834062" expanded="true" signature="1276:1355" placeholder="..." />
+            <marker date="1400853834062" expanded="true" signature="1276:1312" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
