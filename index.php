@@ -19,19 +19,24 @@
                 var pday=$('#p-date').val();
                 $.getJSON("Request.php?bday="+bday+"&pday="+pday,function(data){
                    if(data.status=="ok"){
-
-                    var table="<table class='table table-responsive table-bordered table-striped'> "+
+delete data.status;
+                    var table="<table class='table table-responsive table-bordered table-striped' style='font-size: 12px'> "+
                         "<tr><td>Sr. No.</td><td>Birthday</td><td>Prediction Date</td><td>Prediction For</td>"+
                         "<td>Color</td></tr>";
-
+                       var i=1;
+                       $.each(data,function(id,val){
+    table+="<tr><td>"+i+"</td><td>"+val['b-date']+"</td><td>"+val['p-date']+"</td><td>"+val['p-for']+"</td><td>" +
+        " <div style='width: 20px;height: 20px;background:"+val['hex_code']+";border:1px solid #ccc; '></div></td></tr>";
+                           i++;
+});
                        table+="</table>";
-                       $('#output').html(table).hide().slideDown();
+                       $('#output').html(table);
 
                    }else if(data.status=="no"){
                        console.log(data);
                        $('#output').html(data.result).removeClass("alert-success").addClass("alert-danger");
                    }else{
-
+                       $('#output').html("No data");
                    }
                 });
 
