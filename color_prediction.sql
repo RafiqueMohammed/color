@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 23, 2014 at 01:41 PM
+-- Generation Time: May 24, 2014 at 11:38 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -32,17 +32,21 @@ CREATE TABLE IF NOT EXISTS `color_code` (
   `color_id` int(11) NOT NULL AUTO_INCREMENT,
   `code_name` varchar(50) NOT NULL,
   `hex_code` varchar(7) NOT NULL,
-  `primary_color` varchar(50) NOT NULL,
-  PRIMARY KEY (`color_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='color information table' AUTO_INCREMENT=3 ;
+  PRIMARY KEY (`color_id`),
+  UNIQUE KEY `hex_code` (`hex_code`),
+  UNIQUE KEY `code_name` (`code_name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='color information table' AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `color_code`
 --
 
-INSERT INTO `color_code` (`color_id`, `code_name`, `hex_code`, `primary_color`) VALUES
-(1, 'RED', '#FF0000', 'Red'),
-(2, 'GREEN', '#00FF00', 'Green');
+INSERT INTO `color_code` (`color_id`, `code_name`, `hex_code`) VALUES
+(1, 'RED', '#FF0000'),
+(2, 'GREEN', '#00FF00'),
+(3, 'Acid Green', '#A3B100'),
+(8, 'Blue', '#0000FF'),
+(11, 'SOME', '#5599cc');
 
 -- --------------------------------------------------------
 

@@ -17,7 +17,7 @@
             $('.getPrediction').on('click',function(){
                 var bday=$('#b-date').val();
                 var pday=$('#p-date').val();
-                $.getJSON("Request.php?bday="+bday+"&pday="+pday,function(data){
+                $.getJSON("Request.php?type=view&bday="+bday+"&pday="+pday,function(data){
                    if(data.status=="ok"){
 delete data.status;
                     var table="<table class='table table-responsive table-bordered table-striped' style='font-size: 12px'> "+
@@ -41,6 +41,27 @@ delete data.status;
                 });
 
             });
+
+            $('.addColor').on('click',function(){
+                var color=$('#c-name').val();
+                var hex=$('#c_code').val();
+                console.log(hex);
+              $.getJSON("Request.php?type=add&name="+color+"&code="+hex,function(data){
+                    if(data.status=="ok"){
+
+                        $('#color_output').html(data.result).removeClass().addClass("alert alert-success");
+
+                    }else if(data.status=="no"){
+
+                        $('#color_output').html(data.result).removeClass().addClass("alert alert-danger");
+                    }else{
+                        $('#color_output').html("No data");
+                    }
+                });
+
+            });
+
+
         });
     </script>
 </head>
@@ -54,9 +75,9 @@ delete data.status;
 <div class="container">
 
 
-    <div class="row well">
+    <div class="row">
 
-        <div class="col-md-6">
+        <div class="col-md-6 well pull-left">
 
           <div>
               <table class="table table-responsive">
@@ -72,12 +93,33 @@ delete data.status;
 
               </table>
 
-              <div class="row well" id="output"></div>
+              <div id="output"></div>
 
           </div>
 
         </div>
 
+        <div class="col-md-5 well pull-right">
+
+            <div>
+                <table class="table table-responsive">
+                    <tr>
+                        <td>
+                            <input type="text" class="form-control" id="c-name" placeholder="Color Name" />
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="c_code" placeholder="Code Code" />
+                        </td>
+                        <td><input type="button" class="btn btn-primary addColor" value="Add Color" />
+                        </td></tr>
+
+                </table>
+
+                <div id="color_output"></div>
+
+            </div>
+
+        </div>
 
     </div>
 

@@ -6,25 +6,48 @@
  */
 $db=new mysqli("localhost","root","","color_prediction");
 
-if(isset($_GET['bday'],$_GET['pday'])&&!empty($_GET['bday'])){
-    $bday=trim($_GET['bday']);
-    $pday=trim($_GET['pday']);
+if(isset($_GET['type'])&&!empty($_GET['type'])){
+    $type=$_GET['type'];
 
-$qry= $db->query("SELECT * FROM `predictions` as p INNER JOIN `color_code` as c WHERE p.`color-code`=c.`color_id` AND p.`b-date`='$bday' AND p.`p-date`='$pday'") or die($db->error);
+    switch($type){
+        case 'view':
+            if(isset($_GET['bday'],$_GET['pday'])&&!empty($_GET['bday'])){
+                $bday=trim($_GET['bday']);
+                $pday=trim($_GET['pday']);
 
-    $data=array();
+                $qry= $db->query("SELECT * FROM `predictions` as p INNER JOIN `color_code` as c WHERE p.`color-code`=c.`color_id` AND p.`b-date`='$bday' AND p.`p-date`='$pday'") or die($db->error);
 
-    if($qry->num_rows>0){
-        $data["status"]="ok";
+                $data=array();
 
-        while($info=$qry->fetch_assoc()){
-            $data[]=$info;
-        }
-    }else{
-        $data=array("status"=>"no","result"=>"No predictions are found.");
+                if($qry->num_rows>0){
+                    $data["status"]="ok";
+
+                    while($info=$qry->fetch_assoc()){
+                        $data[]=$info;
+                    }
+                }else{
+                    $data=array("status"=>"no","result"=>"No predictions are found.");
+                }
+            }else{
+                $data=array("status"=>"no","result"=>"Invalid argument passed #3500");
+            };
+            break;
+
+        case 'add':
+            $name=$_GET['name'];
+            $hex=$_GET['code'];
+
+            $db->query("INSERT INTO `color_code`(`code_name`,`hex_code`) VALUES('$name','#{$hex}')");
+
+
+           if($db->affected_rows >0){
+               $data=array("status"=>"ok","result"=>"$name successfully added!");
+           }else{
+               $data=array("status"=>"no","result"=>"$name already exist!");
+           }
+            ;
+            break;
     }
-}else{
-    $data=array("status"=>"no","result"=>"Invalid argument passed #3500");
 }
 
 echo json_encode($data);
