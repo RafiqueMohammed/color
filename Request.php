@@ -32,19 +32,24 @@ if(isset($_GET['type'])&&!empty($_GET['type'])){
                 $data=array("status"=>"no","result"=>"Invalid argument passed #3500");
             };
             break;
-
         case 'add':
-            $name=$_GET['name'];
-            $hex=$_GET['code'];
+            $name=$db->real_escape_string($_GET['name']);
+            $hex=$db->real_escape_string($_GET['code']);
 
-            $db->query("INSERT INTO `color_code`(`code_name`,`hex_code`) VALUES('$name','#{$hex}')");
+$qry=$db->query("SELECT * FROM `color_code` WHERE `code_name`='$name' OR `hex_code`='#{$hex}'");
+if($qry->num_rows>0){
+    $data=array("status"=>"no","result"=>"$name already exist! or ".$db->error);
+}else{
+              $db->query("INSERT INTO `color_code`(`code_name`,`hex_code`) VALUES('$name','#{$hex}')");
 
 
            if($db->affected_rows >0){
                $data=array("status"=>"ok","result"=>"$name successfully added!");
            }else{
-               $data=array("status"=>"no","result"=>"$name already exist!");
-           }
+               $data=array("status"=>"no","result"=>"Error Occured :  ".$db->error);
+           }  
+}
+
             ;
             break;
     }
